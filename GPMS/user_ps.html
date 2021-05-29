@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="layui-v2.6.4/layui/css/layui.css">
+</head>
+<body>
+
+<div class="layui-card-body ">
+    <table id="demo" class="layui-hide" lay-filter="test"></table>
+</div>
+
+<div id="com" class="layer_self_wrap layui-container"  style="width:760px;display:none;">
+    <table id="selectCom" class="layui-table" lay-filter="selectCom"></table>
+</div>
+<!-- 表头按钮 -->
+<script type="text/html" id="TableToolBar">
+    <button  type="button" class="layui-btn layui-btn-sm  layui-btn-danger" lay-event="del">批量删除</button>
+    <button  type="button" class="layui-btn layui-btn-sm  layui-btn-danger" lay-event="move">批量移动</button>
+</script>
+
+<!-- 行按钮 -->
+<script type="text/html" id="RowToolBar">
+    <a class="layui-btn layui-btn-xs" id="edit" lay-event="detail">查看K线</a>
+    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="">财务分析</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除个股</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="move">移动个股</a>
+</script>
+
+<script type="text/html" id="ComRowToolBar">
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="mov">移动到此组合</a>
+</script>
+
+<script src="js/jquery3.5.1.min.js"></script>
+<script src="layui-v2.6.4/layui/layui.js"></script>
+<script src="js/user_ps.js"></script>
+<script>
+
+</script>
+
+</body>
+</html>

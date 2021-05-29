@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title>Bmob后端云测试</title>
+  <script src="Bmob-1.4.2.min.js"></script>
+  <script>
+    Bmob.initialize('9b41c92db4976a1bae59d554f0c3fc4a', '7fa2bb3451025d9da1f234e700ea161a')
+    const query = Bmob.Query("newslist");
+    query.find().then(res => {
+      console.log(res)
+      for (var i = 0; i < res.length; i++) {
+        document.write(`${i}:${res[i].title}-----${res[i].createdAt}<br>`)
+      };
+    });
+  </script>
+</head>
+<body>
+
+</body>
+</html>

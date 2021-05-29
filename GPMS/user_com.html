@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="layui-v2.6.4/layui/css/layui.css">
+</head>
+<body>
+
+<div class="layui-card-body ">
+    <table id="demo" class="layui-hide" lay-filter="test"></table>
+</div>
+<!-- 需要弹出界面 -->
+<div class="layui-row" id="test" style="display: none;">
+    <div class="layui-col-md10">
+        <form class="layui-form">
+            <div class="layui-form-item" style="margin-top: 20px">
+                <label class="layui-form-label">组合名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" id="cname" name="cname" class="layui-input">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 表头按钮 -->
+<script type="text/html" id="TableToolBar">
+    <button type="button" class="layui-btn layui-btn-sm" lay-event="insert" onclick="insert()">添加</button>
+    <button type="button" class="layui-btn layui-btn-sm  layui-btn-danger" lay-event="del">批量删除</button>
+</script>
+
+<!-- 行按钮 -->
+<script type="text/html" id="RowToolBar">
+    <a class="layui-btn layui-btn-xs" id="edit" lay-event="detail">查看组合</a>
+    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit">修改名称</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除组合</a>
+</script>
+<script src="js/jquery3.5.1.min.js"></script>
+<script src="layui-v2.6.4/layui/layui.js"></script>
+<script src="js/user_com.js"></script>
+<script>
+    function insert() {
+        layer.open({
+            type: 1,
+            title: "添加组合",
+            btn: ['确定', '取消'],
+            content: $("#test"),
+            yes:function(index,layero){
+                var input=document.getElementById("cname");
+                var value=input.value;
+                $.ajax({
+                    url: "php/insert_com.php?cname="+value,
+                    async: false,
+                    type: "post",
+                    success: function (res) {
+                        if (res > 0) {
+                            layer.msg('添加成功', {icon: 1});
+                        } else {
+                            layer.msg('组合已存在，添加失败', {icon: 2});
+                        }
+                        window.location.reload();
+                    }
+                });
+                layer.close(index);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
